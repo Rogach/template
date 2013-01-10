@@ -13,7 +13,7 @@ import Loc._
 import fulmar._
 
 class Boot {
-  def boot {
+  def boot() {
     LiftRules.addToPackages("fulmar")
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))    
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
