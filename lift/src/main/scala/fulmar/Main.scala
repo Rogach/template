@@ -7,7 +7,7 @@ import org.eclipse.jetty.webapp.WebAppContext
 
 object Main extends App with Logger {
 
-  val server = new Server(17437)
+  val server = new Server(8088)
   
   val src = new java.io.File("src")
   if (src.exists && src.isDirectory) {
