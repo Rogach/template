@@ -12,6 +12,6 @@ val createMainClass = bool("Do you want to create stub Main file?", true)
 
 override def routes = Seq(
   "".pp append Seq(
-    iif(createMainClass)("src/main/scala/Main.scala".pp)
+    iff(createMainClass)("src/main/scala/Main.scala".pp)
   )
 )
