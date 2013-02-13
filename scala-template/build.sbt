@@ -1,8 +1,10 @@
+#if pluginAssembly
 import AssemblyKeys._
+#fi
 
-organization := "org.default"
+organization := "#{projectOrganization}"
 
-name := "default"
+name := "#{projectName}"
 
 version := "0.0.1"
 
@@ -17,16 +19,25 @@ scalacOptions ++= Seq(
   "-language:implicitConversions",
   "-Xlint")
 
+#if pluginRevolver
 seq(Revolver.settings: _*)
+#fi
 
+#if pluginAssembly
 seq(assemblySettings: _*)
+#fi
 
 libraryDependencies ++= Seq(
+  #if includeScalatest
   "org.scalatest" %% "scalatest" % "1.9.1" % "test"
+  #fi
 )
 
-mainClass in assembly := Some("org.default.Main")
+#if pluginAssembly && createMainClass
+mainClass in assembly := Some("#{rootPackage}.Main")
+#fi
 
+#if pluginBuildInfo
 buildInfoSettings
 
 sourceGenerators in Compile <+= buildInfo
@@ -40,4 +51,5 @@ buildInfoKeys ++= Seq[BuildInfoKey](
   "buildTime" -> (() => System.currentTimeMillis)
 )
 
-buildInfoPackage := "org.default"
+buildInfoPackage := "#{rootPackage}"
+#fi

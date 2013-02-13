@@ -1,4 +1,4 @@
-package org.default
+package #{rootPackage}
 
 object Main extends App {
   println("Hello!")
