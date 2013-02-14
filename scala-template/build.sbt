@@ -48,7 +48,7 @@ buildInfoKeys ++= Seq[BuildInfoKey](
   scalaVersion,
   sbtVersion,
   buildInfoBuildNumber,
-  "buildTime" -> (() => System.currentTimeMillis)
+  BuildInfoKey.action("buildTime") { System.currentTimeMillis }
 )
 
 buildInfoPackage := "#{rootPackage}"

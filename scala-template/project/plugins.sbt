@@ -7,5 +7,5 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.8.6")
 #fi
 
 #if pluginBuildInfo
-addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.2.1")
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.2.2")
 #fi
