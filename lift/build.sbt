@@ -1,23 +1,49 @@
 import AssemblyKeys._
 
-assemblySettings
+organization := "org.default"
 
-organization := "org.rogach"
+name := "default"
 
 version := "0.0.1"
 
-name := "default web project"
+scalaVersion := "2.10.0"
 
-scalaVersion := "2.9.2"
-
-scalacOptions ++= Seq("-deprecation", "-unchecked", "-Xlint")
+scalacOptions ++= Seq(
+  "-deprecation",
+  "-unchecked", 
+  "-feature", 
+  "-language:postfixOps",
+  "-language:reflectiveCalls",
+  "-language:implicitConversions",
+  "-Xlint")
 
 libraryDependencies ++= Seq(
-  "org.eclipse.jetty" % "jetty-server" % "7.6.0.RC5",
-  "org.eclipse.jetty" % "jetty-webapp" % "7.6.0.RC5",
-  "javax.servlet" % "servlet-api" % "2.5" % "provided",
-  "net.liftweb" % "lift-webkit_2.9.1" % "2.4"
+  "org.eclipse.jetty" % "jetty-server" % "8.1.9.v20130131",
+  "org.eclipse.jetty" % "jetty-webapp" % "8.1.9.v20130131",
+  "net.liftweb" %% "lift-webkit" % "2.5-M4",
+  "org.streum" %% "configrity-core" % "1.0.0",
+  "org.rogach" %% "scallop" % "0.8.0"
 )
+
+assemblySettings
+
+mainClass in assembly := Some("org.default.Main")
 
 seq(Revolver.settings: _*)
 
+mainClass in Revolver.reStart := Some("org.default.Main")
+
+buildInfoSettings
+
+sourceGenerators in Compile <+= buildInfo
+
+buildInfoKeys ++= Seq[BuildInfoKey](
+  name,
+  version,
+  scalaVersion,
+  sbtVersion,
+  buildInfoBuildNumber,
+  BuildInfoKey.action("buildTime") { System.currentTimeMillis }
+)
+
+buildInfoPackage := "org.default"
