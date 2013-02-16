@@ -21,6 +21,17 @@ class Boot {
     )
     LiftRules.setSiteMap(SiteMap(pages:_*))
 
+    #if useDatabase && useSlick
+    // wrap the request in db
+    S.addAround( new LoanWrapper {
+      def apply[T](f: => T): T = {
+        #{rootPackage}.DB.exec {
+          f
+        }
+      }
+    })
+    #fi
+
     sys.addShutdownHook {
       #{rootPackage}.Main.server.stop() // jetty server isn't smart enough to stop itself on sigterm
     }

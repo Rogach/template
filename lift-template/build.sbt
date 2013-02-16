@@ -26,6 +26,19 @@ libraryDependencies ++= Seq(
   #if includeScallop
   "org.rogach" %% "scallop" % "0.8.0",
   #fi
+  #if useDatabase
+  "commons-dbcp" % "commons-dbcp" % "1.4",
+  #if db == "mysql"
+  "mysql" % "mysql-connector-java" % "5.1.21",
+  #fi
+  #if useSlick
+  "com.typesafe.slick" %% "slick" % "1.0.0",
+  "org.slf4j" % "slf4j-nop" % "1.6.4",
+  #fi
+  #if useFlyway
+  "com.googlecode.flyway" % "flyway-core" % "2.0.3",
+  #fi
+  #fi
   "org.eclipse.jetty" % "jetty-server" % "8.1.9.v20130131",
   "org.eclipse.jetty" % "jetty-webapp" % "8.1.9.v20130131",
   "net.liftweb" %% "lift-webkit" % "2.5-M4"

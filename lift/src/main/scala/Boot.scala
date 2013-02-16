@@ -21,6 +21,15 @@ class Boot {
     )
     LiftRules.setSiteMap(SiteMap(pages:_*))
 
+    // wrap the request in db
+    S.addAround( new LoanWrapper {
+      def apply[T](f: => T): T = {
+        org.default.DB.exec {
+          f
+        }
+      }
+    })
+
     sys.addShutdownHook {
       org.default.Main.server.stop() // jetty server isn't smart enough to stop itself on sigterm
     }

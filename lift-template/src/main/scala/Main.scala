@@ -17,6 +17,14 @@ object Main extends App {
   #fi
   #if includeConfigrity
   val defaults = new Configuration(Map[String, String](
+    #if useDatabase
+    #if db == "mysql"
+    "db.host" -> "#{mysqlLocation}",
+    "db.name" -> "#{mysqlDbName}",
+    "db.user" -> "#{mysqlUserName}",
+    "db.pass" -> "#{mysqlUserPass}",
+    #fi
+    #fi
     #if https
     "https.use" -> "true",
     "https.only" -> "false",
@@ -31,6 +39,11 @@ object Main extends App {
   val config = defaults ++ allCatch.opt(Configuration.load("server.conf")).getOrElse(Configuration()) ++ Configuration(opts.properties)
   #elif includeConfigrity
   val config = defaults ++ allCatch.opt(Configuration.load("server.conf")).getOrElse(Configuration())
+  #fi
+  
+  #if useDatabase
+  // initialize the db
+  DB
   #fi
 
   #if includeConfigrity

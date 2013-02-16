@@ -17,6 +17,15 @@ val httpPort = string("Port for http listener:", "8088")
 val https = bool("Will your project use https?", true)
 val httpsPort = string("Port for https listener:", "8089").when(https, or = "")
 
+val useDatabase = bool("Do you need to set up sql database?", true)
+val db = select("What database would you like?", "mysql" -> "MySQL", "hsql" -> "HSQLDB (embedded)").when(useDatabase, or = "")
+val mysqlDbName = string("Database name:", "defaultdb").when(db.map(_ == "mysql"), or = "")
+val mysqlUserName = string("Database username", "root").when(db.map(_ == "mysql"), or = "")
+val mysqlUserPass = string("Database password", "").when(db.map(_ == "mysql"), or = "")
+val mysqlLocation = string("Database location", "localhost:3306").when(db.map(_ == "mysql"), or = "")
+val useSlick = bool("Would you like to use Slick for database access?", true).when(useDatabase, or = false)
+val useFlyway = bool("Would you like to use Flyway for database migrations?", true).when(useDatabase, or = false)
+
 override def routes = Seq(
   "".pp append Seq(
     iff(includeScallop)("src/main/scala/Options.scala".pp),
@@ -24,6 +33,8 @@ override def routes = Seq(
     iff(https)("keystore"),
     iff(jsUnderscore)("src/main/resources/jsl/underscore-1.4.3.min.js"),
     "src/main/resources/jsl/jquery-1.8.3.min.js",
-    "src/main/resources/bootstrap" // these don't need preprocessing
+    "src/main/resources/bootstrap", // these don't need preprocessing
+    iff(useDatabase)("src/main/scala/DB.scala".pp),
+    iff(useFlyway)("src/main/resources/db_migrations")
   )
 )
