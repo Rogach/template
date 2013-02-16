@@ -35,6 +35,7 @@ class Boot {
     }
     LiftRules.unloadHooks.append({ () =>
       // lift unload, happens after all remaining requests were served
+      org.default.DB.shutdown
       println("Lift server stopped. (x_x)")
     })
 

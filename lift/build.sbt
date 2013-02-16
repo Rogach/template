@@ -21,7 +21,7 @@ libraryDependencies ++= Seq(
   "org.streum" %% "configrity-core" % "1.0.0",
   "org.rogach" %% "scallop" % "0.8.0",
   "commons-dbcp" % "commons-dbcp" % "1.4",
-  "mysql" % "mysql-connector-java" % "5.1.21",
+  "org.hsqldb" % "hsqldb" % "2.2.9",
   "com.typesafe.slick" %% "slick" % "1.0.0",
   "org.slf4j" % "slf4j-nop" % "1.6.4",
   "com.googlecode.flyway" % "flyway-core" % "2.0.3",

@@ -30,6 +30,8 @@ libraryDependencies ++= Seq(
   "commons-dbcp" % "commons-dbcp" % "1.4",
   #if db == "mysql"
   "mysql" % "mysql-connector-java" % "5.1.21",
+  #elif db == "hsql"
+  "org.hsqldb" % "hsqldb" % "2.2.9",
   #fi
   #if useSlick
   "com.typesafe.slick" %% "slick" % "1.0.0",

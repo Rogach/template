@@ -3,22 +3,22 @@ package org.default
 import org.apache.commons.dbcp.BasicDataSource
 import javax.sql.DataSource
 import Main.config
-import scala.slick.driver.MySQLDriver.simple._
+import scala.slick.driver.HsqldbDriver.simple._
+import scala.slick.jdbc.StaticQuery
 import Database.threadLocalSession
 import com.googlecode.flyway.core.Flyway
 
 object DB {
   val dataSource: DataSource = {
     val ds = new BasicDataSource
-    ds.setDriverClassName("com.mysql.jdbc.Driver")
-    ds.setUsername(config[String]("db.user"))
-    ds.setPassword(config[String]("db.pass"))
+    ds.setDriverClassName("org.hsqldb.jdbc.JDBCDriver")
+    ds.setUsername("SA")
+    ds.setPassword("")
     ds.setMaxActive(20);
     ds.setMaxIdle(10);
     ds.setInitialSize(10);
-    ds.setValidationQuery("SELECT 1")
-    ds.setUrl("jdbc:mysql://%s/%s?useUnicode=true&characterEncoding=UTF-8" 
-      format (config[String]("db.host"), config[String]("db.name")))
+    ds.setValidationQuery("SELECT 1 FROM INFORMATION_SCHEMA.SYSTEM_USERS")
+    ds.setUrl("jdbc:hsqldb:file:target/db/db")
     ds
   }
   
@@ -33,8 +33,10 @@ object DB {
 
   val database = Database.forDataSource(dataSource)
 
-  val lastInsertIdFunction = SimpleFunction.nullary[Long]("LAST_INSERT_ID")
+  val lastInsertIdFunction = SimpleFunction.nullary[Long]("IDENTITY")
   def lastInsertId = Query(lastInsertIdFunction).firstOption
+  
+  def shutdown = StaticQuery.updateNA("SHUTDOWN")
 
   /** runs the db code inside the transaction */
   def exec[A](fn: => A) =

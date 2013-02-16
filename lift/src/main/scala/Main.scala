@@ -10,10 +10,6 @@ import util.control.Exception._
 object Main extends App {
   val opts = new Options(args)
   val defaults = new Configuration(Map[String, String](
-    "db.host" -> "localhost:3306",
-    "db.name" -> "defaultdb",
-    "db.user" -> "root",
-    "db.pass" -> "",
     "https.use" -> "true",
     "https.only" -> "false",
     "https.port" -> "8089",

@@ -18,11 +18,13 @@ val https = bool("Will your project use https?", true)
 val httpsPort = string("Port for https listener:", "8089").when(https, or = "")
 
 val useDatabase = bool("Do you need to set up sql database?", true)
-val db = select("What database would you like?", "mysql" -> "MySQL", "hsql" -> "HSQLDB (embedded)").when(useDatabase, or = "")
+val db = select("What database would you like?", "hsql" -> "HSQLDB (embedded)", "mysql" -> "MySQL").when(useDatabase, or = "")
+
 val mysqlDbName = string("Database name:", "defaultdb").when(db.map(_ == "mysql"), or = "")
 val mysqlUserName = string("Database username", "root").when(db.map(_ == "mysql"), or = "")
 val mysqlUserPass = string("Database password", "").when(db.map(_ == "mysql"), or = "")
 val mysqlLocation = string("Database location", "localhost:3306").when(db.map(_ == "mysql"), or = "")
+
 val useSlick = bool("Would you like to use Slick for database access?", true).when(useDatabase, or = false)
 val useFlyway = bool("Would you like to use Flyway for database migrations?", true).when(useDatabase, or = false)
 

@@ -37,6 +37,9 @@ class Boot {
     }
     LiftRules.unloadHooks.append({ () =>
       // lift unload, happens after all remaining requests were served
+      #if useDatabase && (db == "hsql")
+      #{rootPackage}.DB.shutdown
+      #fi
       println("Lift server stopped. (x_x)")
     })
 
