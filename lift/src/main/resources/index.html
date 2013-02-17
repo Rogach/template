@@ -17,8 +17,10 @@
     </ul>
     <p class="text-success">Usage:</p>
     <ul>
-      <li>Start server on port 8088: re-start</li>
-      <li>Create a runnable jar: assembly</li>
+      <li>Start server on port 8088: <code>re-start</code></li>
+      <li>Create a runnable jar: <code>assembly</code></li>
+      <li>Create a folder with files, ready for deployment: <code>deploy-pack</code> (the resulting files are located in target/deploy)</li>
+      <li>Deploy the project to server and start it (requires rsync and ssh): <code>deploy-ssh "host" "path"</code></li>
     </ul>
     <div class="alert alert-block alert-error">
       <h4>HTTPS keystore must be regenerated!</h4>
