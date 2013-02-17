@@ -23,15 +23,24 @@ scalacOptions ++= Seq(
 seq(Revolver.settings: _*)
 #fi
 
+#if pluginRevolver && createMainClass
+mainClass in Revolver.reStart := Some("#{rootPackage}.Main")
+#fi
+
 #if pluginAssembly
-seq(assemblySettings: _*)
+assemblySettings
 #fi
 
 libraryDependencies ++= Seq(
-  #if includeScalatest
-  "org.scalatest" %% "scalatest" % "1.9.1" % "test"
-  #fi
 )
+
+#if includeScallop
+libraryDependencies += "org.rogach" %% "scallop" % "0.8.0"
+#fi
+
+#if includeScalatest
+libraryDependencies += "org.scalatest" %% "scalatest" % "1.9.1" % "test"
+#fi
 
 #if pluginAssembly && createMainClass
 mainClass in assembly := Some("#{rootPackage}.Main")

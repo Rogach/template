@@ -8,6 +8,7 @@ val pluginAssembly = bool("Do you need sbt-assembly plugin included?", true).whe
 val pluginRevolver = bool("Do you need sbt-revolver plugin included?", true).when(configurePlugins, or = true)
 
 val includeScalatest = bool("Do you want ScalaTest included?", true)
+val includeScallop = bool("Are you going to use command-line options?", true)
 val createMainClass = bool("Do you want to create stub Main file?", true)
 
 override def routes = Seq(

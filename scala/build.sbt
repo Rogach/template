@@ -19,11 +19,16 @@ scalacOptions ++= Seq(
 
 seq(Revolver.settings: _*)
 
-seq(assemblySettings: _*)
+mainClass in Revolver.reStart := Some("org.default.Main")
+
+assemblySettings
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 )
+
+libraryDependencies += "org.rogach" %% "scallop" % "0.8.0"
+
+libraryDependencies += "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 
 mainClass in assembly := Some("org.default.Main")
 
