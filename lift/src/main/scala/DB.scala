@@ -18,6 +18,7 @@ object DB {
     ds.setMaxIdle(10);
     ds.setInitialSize(10);
     ds.setValidationQuery("SELECT 1 FROM INFORMATION_SCHEMA.SYSTEM_USERS")
+    new java.io.File("target").mkdirs // ensure that folder for database exists
     ds.setUrl("jdbc:hsqldb:file:target/db/db")
     ds
   }

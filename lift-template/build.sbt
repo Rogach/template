@@ -50,6 +50,14 @@ libraryDependencies ++= Seq(
 assemblySettings
 
 mainClass in assembly := Some("#{rootPackage}.Main")
+
+mergeStrategy in assembly <<= (mergeStrategy in assembly) { old =>
+  {
+    case "index.html" => MergeStrategy.first
+    case "about.html" => MergeStrategy.discard
+    case x => old(x)
+  }
+}
 #fi
 
 #if pluginRevolver

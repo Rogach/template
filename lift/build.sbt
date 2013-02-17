@@ -34,6 +34,14 @@ assemblySettings
 
 mainClass in assembly := Some("org.default.Main")
 
+mergeStrategy in assembly <<= (mergeStrategy in assembly) { old =>
+  {
+    case "index.html" => MergeStrategy.first
+    case "about.html" => MergeStrategy.discard
+    case x => old(x)
+  }
+}
+
 seq(Revolver.settings: _*)
 
 mainClass in Revolver.reStart := Some("org.default.Main")

@@ -54,6 +54,7 @@ object DB {
       format (#{mysqlLocation}, #{mysqlDbName}))
     #fi
     #elif db == "hsql"
+    new java.io.File("target").mkdirs // ensure that folder for database exists
     ds.setUrl("jdbc:hsqldb:file:target/db/db")
     #fi
     ds

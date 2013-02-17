@@ -6,6 +6,7 @@ val configurePlugins = bool("Do you want to configure sbt plugins?", false)
 val pluginBuildInfo = bool("Do you need sbt-buildinfo plugin included?", true).when(configurePlugins, or = true)
 val pluginAssembly = bool("Do you need sbt-assembly plugin included?", true).when(configurePlugins, or = true)
 val pluginRevolver = bool("Do you need sbt-revolver plugin included?", true).when(configurePlugins, or = true)
+val pluginDeploy = bool("Do you want deploy helpers included? (requires rsync and ssh)", true).when(pluginAssembly, or = false).when(configurePlugins, or = true)
 
 val configureJsLibs = bool("Do you want to configure JavaScript libraries?", false)
 val jsUnderscore = bool("Do you need Underscore.js lib included?", true).when(configureJsLibs, or = true)
@@ -37,6 +38,8 @@ override def routes = Seq(
     "src/main/resources/jsl/jquery-1.8.3.min.js",
     "src/main/resources/bootstrap", // these don't need preprocessing
     iff(useDatabase)("src/main/scala/DB.scala".pp),
-    iff(useFlyway)("src/main/resources/db_migrations")
+    iff(useFlyway)("src/main/resources/db_migrations"),
+    iff(pluginDeploy)("project/build.scala".pp),
+    iff(pluginDeploy)("project/Deploy.scala".pp)
   )
 )
