@@ -3,5 +3,5 @@ import Keys._
 
 object build extends Build {
 
-  lazy val root = Project("default", file(".")) settings (Deploy.deploySettings:_*)
+  lazy val root = Project("#{projectName}", file(".")) settings (Deploy.deploySettings:_*)
 }
