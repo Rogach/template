@@ -32,15 +32,16 @@ assemblySettings
 #fi
 
 libraryDependencies ++= Seq(
+  #sep,
+  #if includeScallop
+  "org.rogach" %% "scallop" % "0.8.0"
+  #fi
+  #if includeScalatest
+  "org.scalatest" %% "scalatest" % "1.9.1" % "test"
+  #fi
+  #endsep
 )
 
-#if includeScallop
-libraryDependencies += "org.rogach" %% "scallop" % "0.8.0"
-#fi
-
-#if includeScalatest
-libraryDependencies += "org.scalatest" %% "scalatest" % "1.9.1" % "test"
-#fi
 
 #if pluginAssembly && createMainClass
 mainClass in assembly := Some("#{rootPackage}.Main")
