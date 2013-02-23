@@ -20,7 +20,7 @@ object Deploy {
       """#!/bin/bash
         |DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
         |cd $DIR
-        |java -jar %s
+        |java -Dfile.encoding=UTF8 -jar %s
         |""" format (jarName) stripMargin)
     target / "deploy" / "start.sh" setExecutable true
   }
