@@ -35,11 +35,13 @@ libraryDependencies ++= Seq(
   #fi
   #if useSlick
   "com.typesafe.slick" %% "slick" % "1.0.0",
-  "org.slf4j" % "slf4j-nop" % "1.6.4",
   #fi
   #if useFlyway
   "com.googlecode.flyway" % "flyway-core" % "2.0.3",
   #fi
+  #fi
+  #if useLogback
+  "ch.qos.logback" % "logback-classic" % "1.0.9",
   #fi
   "org.eclipse.jetty" % "jetty-server" % "8.1.9.v20130131",
   "org.eclipse.jetty" % "jetty-webapp" % "8.1.9.v20130131",

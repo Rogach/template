@@ -28,6 +28,7 @@ val mysqlLocation = string("Database location", "localhost:3306").when(db.map(_ 
 
 val useSlick = bool("Would you like to use Slick for database access?", true).when(useDatabase, or = false)
 val useFlyway = bool("Would you like to use Flyway for database migrations?", true).when(useDatabase, or = false)
+val useLogback = bool("Would you like to use LogBack for logging?", true).unless(useSlick, or = true)
 
 override def routes = Seq(
   "".pp append Seq(
@@ -40,6 +41,7 @@ override def routes = Seq(
     iff(useDatabase)("src/main/scala/DB.scala".pp),
     iff(useFlyway)("src/main/resources/db_migrations"),
     iff(pluginDeploy)("project/build.scala".pp),
-    iff(pluginDeploy)("project/Deploy.scala".pp)
+    iff(pluginDeploy)("project/Deploy.scala".pp),
+    iff(useLogback)("src/main/resources/logback.xml".pp)
   )
 )
