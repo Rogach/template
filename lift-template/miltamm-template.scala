@@ -30,6 +30,8 @@ val useSlick = bool("Would you like to use Slick for database access?", true).wh
 val useFlyway = bool("Would you like to use Flyway for database migrations?", true).when(useDatabase, or = false)
 val useLogback = bool("Would you like to use LogBack for logging?", true).unless(useSlick, or = true)
 
+val exampleSnippet = bool("Do you need to have an example snippet set up?", true)
+
 override def routes = Seq(
   "".pp append Seq(
     iff(includeScallop)("src/main/scala/Options.scala".pp),
@@ -42,6 +44,7 @@ override def routes = Seq(
     iff(useFlyway)("src/main/resources/db_migrations"),
     iff(pluginDeploy)("project/build.scala".pp),
     iff(pluginDeploy)("project/Deploy.scala".pp),
-    iff(useLogback)("src/main/resources/logback.xml".pp)
+    iff(useLogback)("src/main/resources/logback.xml".pp),
+    iff(exampleSnippet)("src/main/scala/Simple.scala".pp)
   )
 )
