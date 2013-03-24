@@ -24,7 +24,7 @@ libraryDependencies ++= Seq(
   "org.streum" %% "configrity-core" % "1.0.0",
   #fi
   #if includeScallop
-  "org.rogach" %% "scallop" % "0.8.0",
+  "org.rogach" %% "scallop" % "0.8.1",
   #fi
   #if useDatabase
   "commons-dbcp" % "commons-dbcp" % "1.4",
@@ -42,6 +42,7 @@ libraryDependencies ++= Seq(
   #fi
   #if useLogback
   "ch.qos.logback" % "logback-classic" % "1.0.9",
+  "org.eintr.loglady" %% "loglady" % "1.1.0",
   #fi
   "org.eclipse.jetty" % "jetty-server" % "8.1.9.v20130131",
   "org.eclipse.jetty" % "jetty-webapp" % "8.1.9.v20130131",

@@ -1,4 +1,4 @@
-package ${rootPackage}.snippet
+package #{rootPackage}.snippet
 
 import net.liftweb._
 import net.liftweb.http._

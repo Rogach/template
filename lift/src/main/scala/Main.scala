@@ -27,7 +27,7 @@ object Main extends App {
   val src = new java.io.File("src")
   if (src.exists && src.isDirectory) {
     // dev mode
-    server.setHandler(new WebAppContext("src/main/resources", "/"))
+    server.setHandler(new WebAppContext("src/main/resources/webapp/", "/"))
   } else {
     // runnable jar
     server.setHandler(new WebAppContext(getClass.getClassLoader.getResource("WEB-INF/web.xml").toExternalForm.stripSuffix("WEB-INF/web.xml"), "/"))
