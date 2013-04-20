@@ -10,8 +10,8 @@ scalaVersion := "2.10.1"
 
 scalacOptions ++= Seq(
   "-deprecation",
-  "-unchecked", 
-  "-feature", 
+  "-unchecked",
+  "-feature",
   "-language:postfixOps",
   "-language:reflectiveCalls",
   "-language:implicitConversions",
@@ -28,7 +28,7 @@ libraryDependencies ++= Seq(
   "org.eintr.loglady" %% "loglady" % "1.1.0",
   "org.eclipse.jetty" % "jetty-server" % "8.1.9.v20130131",
   "org.eclipse.jetty" % "jetty-webapp" % "8.1.9.v20130131",
-  "net.liftweb" %% "lift-webkit" % "2.5-M4"
+  "net.liftweb" %% "lift-webkit" % "2.5-RC5"
 )
 
 assemblySettings
