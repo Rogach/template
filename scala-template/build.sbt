@@ -8,12 +8,12 @@ name := "#{projectName}"
 
 version := "0.0.1"
 
-scalaVersion := "2.10.1"
+scalaVersion := "2.10.2"
 
 scalacOptions ++= Seq(
   "-deprecation",
-  "-unchecked", 
-  "-feature", 
+  "-unchecked",
+  "-feature",
   "-language:postfixOps",
   "-language:reflectiveCalls",
   "-language:implicitConversions",
