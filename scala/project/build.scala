@@ -23,7 +23,7 @@ object build extends Build {
         "-Xlint"
       ),
 
-      libraryDependencies := Seq(
+      libraryDependencies ++= Seq(
         "org.rogach" %% "scallop" % "0.9.3",
         "org.scalatest" %% "scalatest" % "1.9.1" % "test"
       ),

@@ -35,7 +35,7 @@ object build extends Build {
         "-Xlint"
       ),
 
-      libraryDependencies := Seq(
+      libraryDependencies ++= Seq(
         #sep,
         #if includeScallop
         "org.rogach" %% "scallop" % "0.9.3"
