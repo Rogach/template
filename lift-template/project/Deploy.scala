@@ -12,10 +12,6 @@ object Deploy {
     if (base / "server.conf" exists)
       IO.copyFile(base / "server.conf", target / "deploy" / "server.conf")
     #fi
-    #if https
-    if (base / "keystore" exists)
-      IO.copyFile(base / "keystore", target / "deploy" / "keystore")
-    #fi
     IO.write(target / "deploy" / "start.sh",
       """#!/bin/bash
         |DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
@@ -24,12 +20,12 @@ object Deploy {
         |""" format (jarName) stripMargin)
     target / "deploy" / "start.sh" setExecutable true
   }
-  
+
   val deployHost = SettingKey[Option[String]]("deployHost", "default host, on which deployed files will be pushed")
   val deployDest = SettingKey[Option[String]]("deployDest", "default destination on that host")
-  
+
   val deploySsh = InputKey[Unit]("deploy-ssh") <<= inputTask { (argTask: TaskKey[Seq[String]]) =>
-    (argTask, deployPackTask, deployHost, deployDest, jarName in assembly, target) map { (args, _, deployHost, deployDest, jarName, target) => 
+    (argTask, deployPackTask, deployHost, deployDest, jarName in assembly, target) map { (args, _, deployHost, deployDest, jarName, target) =>
       val (host, dest) = if (args.size < 2) {
         (for {
           host <- deployHost
@@ -45,6 +41,6 @@ object Deploy {
       }
     }
   }
-  
+
   lazy val deploySettings = Seq(deployPack, deployHost := None, deployDest := None, deploySsh)
 }

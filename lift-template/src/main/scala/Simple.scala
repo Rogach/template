@@ -7,6 +7,6 @@ import net.liftweb.common._
 
 class Simple {
   def render = {
-
+    ???
   }
 }

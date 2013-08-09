@@ -15,8 +15,6 @@ val jsDojo = bool("Do you need Dojo framework included?", true).when(configureJs
 val includeConfigrity = bool("Do you want to include configuration library (Configrity)?", true)
 val includeScallop = bool("Are you going to use command-line options?", true)
 val httpPort = int("Port for http listener:", 8088)
-val https = bool("Will your project use https?", true)
-val httpsPort = int("Port for https listener:", 8089).when(https, or = 0)
 
 val useDatabase = bool("Do you need to set up sql database?", true)
 val db = select("What database would you like?", "hsql" -> "HSQLDB (embedded)", "mysql" -> "MySQL").when(useDatabase, or = "")
@@ -36,7 +34,6 @@ override def routes = Seq(
   "".pp append Seq(
     iff(includeScallop)("src/main/scala/Options.scala".pp),
     iff(includeConfigrity)("server.conf".pp),
-    iff(https)("keystore"),
     iff(jsUnderscore)("src/main/resources/webapp/jsl/underscore-1.4.3.min.js"),
     "src/main/resources/webapp/jsl/jquery-1.8.3.min.js",
     "src/main/resources/webapp/bootstrap", // these don't need preprocessing

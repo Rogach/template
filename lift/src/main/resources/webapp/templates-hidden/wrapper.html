@@ -1,44 +1,39 @@
 <html>
   <head>
     <!-- Let's get some style! -->
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"> 
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-glyphicons.css">
 
-    <script src="/jsl/jquery-1.8.3.min.js"></script>
-    <script src="/jsl/underscore-1.4.3.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/bootstrap/js/bootstrap-modal.js"></script>
     <script>
       var dojoConfig = {
         async: true,
         parseOnLoad: false
       }
     </script>
-    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   </head>
   <body>
-      <div class="navbar navbar-static-top navbar-inverse">
-        <div class="navbar-inner">
-          <div class="container">
-            <a class="brand" href="/">default</a>
-            <div class="nav">
-              <ul class="nav">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Item 1</a></li>
-                    <li><a href="#">Item 2</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="icon-wrench icon-white"></i></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <div class="navbar navbar-static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">default</a>
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Menu <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Item 1</a></li>
+              <li><a href="#">Item 2</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
+    </div>
     <div class="container">
       <div class="row">
         <div id="content" class="span12"/>
