@@ -1,7 +1,6 @@
 import sbt._
 import Keys._
-import sbtassembly.Plugin._
-import sbtassembly.Plugin.AssemblyKeys._
+import sbtassembly.AssemblyKeys._
 import spray.revolver.RevolverPlugin._
 import sbtbuildinfo.Plugin._
 

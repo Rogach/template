@@ -1,8 +1,7 @@
 import sbt._
 import Keys._
 #if pluginAssembly
-import sbtassembly.Plugin._
-import sbtassembly.Plugin.AssemblyKeys._
+import sbtassembly.AssemblyKeys._
 #fi
 #if pluginRevolver
 import spray.revolver.RevolverPlugin._
