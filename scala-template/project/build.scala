@@ -13,9 +13,6 @@ import sbtbuildinfo.Plugin._
 object build extends Build {
 
   lazy val root = Project("#{projectName}", file("."))
-    #if pluginAssembly
-    .settings(assemblySettings:_*)
-    #fi
     #if pluginRevolver
     .settings(Revolver.settings:_*)
     #fi

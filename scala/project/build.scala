@@ -7,7 +7,6 @@ import sbtbuildinfo.Plugin._
 object build extends Build {
 
   lazy val root = Project("default", file("."))
-    .settings(assemblySettings:_*)
     .settings(Revolver.settings:_*)
     .settings(buildInfoSettings:_*)
     .settings (
