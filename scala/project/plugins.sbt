@@ -1,5 +1,5 @@
-addSbtPlugin("io.spray" % "sbt-revolver" % "0.7.1")
+addSbtPlugin("io.spray" % "sbt-revolver" % "0.7.2")
 
-addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.9.1")
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.12.0")
 
-addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.2.5")
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.3.2")
