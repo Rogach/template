@@ -20,7 +20,7 @@ object build extends Build {
     .settings(buildInfoSettings:_*)
     #fi
     .settings (
-      scalaVersion := "2.10.2",
+      scalaVersion := "2.11.4",
       scalacOptions ++= Seq(
         "-deprecation",
         "-unchecked",
@@ -37,7 +37,7 @@ object build extends Build {
         "org.rogach" %% "scallop" % "0.9.3"
         #fi
         #if includeScalatest
-        "org.scalatest" %% "scalatest" % "1.9.1" % "test"
+        "org.scalatest" %% "scalatest" % "2.2.2" % "test"
         #fi
         #endsep
       ),

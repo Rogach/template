@@ -10,7 +10,7 @@ object build extends Build {
     .settings(Revolver.settings:_*)
     .settings(buildInfoSettings:_*)
     .settings (
-      scalaVersion := "2.10.2",
+      scalaVersion := "2.11.4",
       scalacOptions ++= Seq(
         "-deprecation",
         "-unchecked",
@@ -23,7 +23,7 @@ object build extends Build {
 
       libraryDependencies ++= Seq(
         "org.rogach" %% "scallop" % "0.9.3",
-        "org.scalatest" %% "scalatest" % "1.9.1" % "test"
+        "org.scalatest" %% "scalatest" % "2.2.2" % "test"
       ),
 
       Revolver.reColors := Seq("blue", "green", "magenta", "cyan"),
