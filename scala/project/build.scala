@@ -27,7 +27,7 @@ object build extends Build {
       ),
 
       Revolver.reColors := Seq("blue", "green", "magenta", "cyan"),
-      mainClass in Revolver.reStart := Some("rosefinch.Main"),
+      mainClass in Revolver.reStart := Some("org.default.Main"),
       mainClass in assembly := Some("org.default.Main"),
       sourceGenerators in Compile <+= buildInfo,
       buildInfoPackage := "org.default",

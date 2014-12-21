@@ -46,7 +46,7 @@ object build extends Build {
       Revolver.reColors := Seq("blue", "green", "magenta", "cyan"),
       #fi
       #if pluginRevolver && createMainClass
-      mainClass in Revolver.reStart := Some("rosefinch.Main"),
+      mainClass in Revolver.reStart := Some("#{rootPackage}.Main"),
       #fi
       #if pluginAssembly && createMainClass
       mainClass in assembly := Some("#{rootPackage}.Main"),
