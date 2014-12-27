@@ -34,10 +34,13 @@ object build extends Build {
       libraryDependencies ++= Seq(
         #sep,
         #if includeScallop
-        "org.rogach" %% "scallop" % "0.9.3"
+        "org.rogach" %% "scallop" % "0.9.5"
         #fi
         #if includeScalatest
         "org.scalatest" %% "scalatest" % "2.2.2" % "test"
+        #fi
+        #if includeScalactic
+        "org.scalactic" %% "scalactic" % "2.2.2"
         #fi
         #endsep
       ),

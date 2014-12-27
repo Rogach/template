@@ -22,8 +22,9 @@ object build extends Build {
       ),
 
       libraryDependencies ++= Seq(
-        "org.rogach" %% "scallop" % "0.9.3",
-        "org.scalatest" %% "scalatest" % "2.2.2" % "test"
+        "org.rogach" %% "scallop" % "0.9.5",
+        "org.scalatest" %% "scalatest" % "2.2.2" % "test",
+        "org.scalactic" %% "scalactic" % "2.2.2"
       ),
 
       Revolver.reColors := Seq("blue", "green", "magenta", "cyan"),
